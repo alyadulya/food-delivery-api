@@ -85,7 +85,6 @@ const logout = (req, res, next) => {
 }
 
 const me = (req, res, next) => {
-    console.log(req);
     if(!req.user) {
         res.json({
             error: 1,
