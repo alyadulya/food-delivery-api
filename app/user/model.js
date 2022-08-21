@@ -31,7 +31,7 @@ let userSchema = Schema({
     role: {
         type: String,
         enum: ['user', 'admin'],
-        default: user
+        default: 'user'
     },
 
     token: [String]
