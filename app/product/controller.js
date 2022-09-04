@@ -90,7 +90,12 @@ const store = async (req, res, next) => {
 
             src.on('end', async () => {
                 try {
-                    let product = new Product({...payload, image_url: filename})
+                    let product = new Product(
+                        {
+                            ...payload,
+                            image_url: `${config.imageUrl}/images/products/${filename}`
+                        }
+                    )
                     await product.save()
                     return res.json(product);
                 } catch(err) {
