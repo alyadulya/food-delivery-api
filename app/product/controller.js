@@ -93,7 +93,7 @@ const store = async (req, res, next) => {
                     let product = new Product(
                         {
                             ...payload,
-                            image_url: `${config.imageUrl}/images/products/${filename}`
+                            image_url: filename
                         }
                     )
                     await product.save()
