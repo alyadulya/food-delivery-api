@@ -2,8 +2,12 @@ const Category = require('./model');
 
 const index = async (req, res, next) => {
     try {
+        let count = await Category.find().countDocuments();
         let category = await Category.find();
-        return res.json(category);
+        return res.json({
+            data: category,
+            count
+        });
     } catch(err) {
         if (err && err.name === 'ValidationError') {
             return res.json({

@@ -2,8 +2,12 @@ const Tag = require('./model');
 
 const index = async (req, res, next) => {
     try {
+        let count = await Tag.find().countDocuments();
         let tag = await Tag.find();
-        return res.json(tag);
+        return res.json({
+            data: tag,
+            count
+        });
     } catch(err) {
         if (err && err.name === 'ValidationError') {
             return res.json({
