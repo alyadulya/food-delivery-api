@@ -16,6 +16,7 @@ const index = async (req, res, next) => {
             .limit(parseInt(limit))
             .populate('order_items')
             .sort('-createdAt');
+        return res.json({ data: orders, count })
     } catch (err) {
         if(err && err.name === 'ValidationError') {
             return res.json({
