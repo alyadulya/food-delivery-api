@@ -5,7 +5,7 @@ const orderItemSchema = Schema({
 
     name: {
         type: String,
-        minlength: [5, 'Panjang nama makanan minimal 50 karakter'],
+        minlength: [5, 'Panjang nama makanan minimal 5 karakter'],
         required: [true, 'name must be filled']
     },
 
@@ -16,15 +16,19 @@ const orderItemSchema = Schema({
 
     qty: {
         type: Number,
-        required: [true, 'Harga item harus diisi']
+        required: [true, 'Jumlah item harus diisi'],
+        min: [1, 'Jumlah item minimal 1']
     },
-
-    user: {
+    
+    product: {
         type: Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'Product'
     },
 
-    order_items: [{ type: Schema.Types.ObjectId, ref: 'OrderItem' }]
+    order: {
+        type: Schema.Types.ObjectId,
+        ref: 'Order'
+    }
 
 }, {timestamps: true})
 
